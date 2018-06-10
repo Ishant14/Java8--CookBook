@@ -118,10 +118,11 @@ process objects of that collection.
 
 ## We can process the objects in the following 2 phases
 
-1.Configuration
-2.Processing
+1. Configuration
+2. Processing
 
 **1. Configuration**
+
 We can configure either by using **filter** mechanism or by using **map** mechanism.
 
 **Filtering:**
@@ -152,9 +153,10 @@ requirement then we should go for map() method of Stream interface.
 ```java
 public Stream map (Function f);
 ```
+  
+  
                      |
-                     |
-                     __________it can be lamba expression also
+                     ---------it can be lamba expression also
                      
 Example :
 
@@ -165,3 +167,12 @@ Stream s = c.stream();
  
 Once we performed configuration we can process objects by using several methods.
 
+**2. Processing**
+
+- processing by **collect()** method
+- Processing by **count()** method
+- Processing by **sorted()** method
+- Processing by **min()** and **max()** methods
+- **forEach()** method
+- **toArray()** method
+- **Stream.of()** method
