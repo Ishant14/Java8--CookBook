@@ -103,7 +103,7 @@ Java.util streams both are different.
 
 **What is the difference between collection and stream?**
 
-If we want to represent a group of individual objects as a single entity then We should go for
+- If we want to represent a group of individual objects as a single entity then We should go for
 collection.
 - If we want to process a group of objects from the collection then we should go for streams.
 - We can create a stream object to the collection by using stream() method of Collection interface.
@@ -114,3 +114,54 @@ Stream = list.stream();
 ```
 Stream is an interface present in java.util.stream. Once we got the stream, by using that we can
 process objects of that collection.
+
+
+## We can process the objects in the following 2 phases
+
+1.Configuration
+2.Processing
+
+**1. Configuration**
+We can configure either by using **filter** mechanism or by using **map** mechanism.
+
+**Filtering:**
+
+We can configure a filter to filter elements from the collection based on some boolean condition by using filter()method of Stream interface.
+
+```java
+public Stream filter(Predicate<T> t)
+ ```
+ 
+here **(Predicate<T > t )** can be a boolean valued function/lambda expression
+
+Example :
+
+```java
+Stream s = c.stream();
+Stream s1 = s.filter(i -> i%2==0);
+```
+
+Hence to filter elements of collection based on some Boolean condition we should go for filter()
+method.
+
+**Mapping:**
+
+If we want to create a separate new object, for every object present in the collection based on our
+requirement then we should go for map() method of Stream interface.
+
+```java
+public Stream map (Function f);
+```
+                     |
+                     |
+                     __________it can be lamba expression also
+                     
+Example :
+
+```java
+Stream s = c.stream();
+ Stream s1 = s.map(i-> i+10);
+ ```
+ 
+Once we performed configuration we can process objects by using several methods.
+
