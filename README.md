@@ -93,3 +93,24 @@ functional interfaces are required.
 # Streams
 
 >To process objects of the collection, in 1.8 version Streams concept introduced
+
+**What is the differences between Java.util.streams and Java.io streams?**
+
+java.util streams meant for processing objects from the collection. Ie, it represents a stream of objects
+from the collection but Java.io streams meant for processing binary and character data with respect to
+file. i.e it represents stream of binary data or character data from the file .hence Java.io streams and
+Java.util streams both are different.
+
+**What is the difference between collection and stream?**
+
+If we want to represent a group of individual objects as a single entity then We should go for
+collection.
+- If we want to process a group of objects from the collection then we should go for streams.
+- We can create a stream object to the collection by using stream() method of Collection interface.
+stream() method is a default method added to the Collection in 1.8 version.
+```java
+List<Person> list = new ArrayList();
+Stream = list.stream();
+```
+Stream is an interface present in java.util.stream. Once we got the stream, by using that we can
+process objects of that collection.
