@@ -23,7 +23,7 @@ The above method can be written as below in lambda expression :
 () -> sop(“hello”);
 ```
 
-**Another Example **
+**Example 2: **
 
 ```java
 public void add(inta, int b) {
