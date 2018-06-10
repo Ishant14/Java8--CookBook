@@ -43,7 +43,7 @@ we can remove types also.The above Lambda expression we can rewrite as
 (a,b) -> sop (a+b);
 ```
 
-**Important points about lamba expression**
+## Important points about lamba expression
 
 1. A lambda expression can have zero or more number of parameters (arguments).
 
