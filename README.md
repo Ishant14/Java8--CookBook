@@ -23,7 +23,7 @@ The above method can be written as below in lambda expression :
 () -> sop(“hello”);
 ```
 
-**Example 2: **
+**Example 2:**
 
 ```java
 public void add(inta, int b) {
@@ -43,7 +43,7 @@ we can remove types also.The above Lambda expression we can rewrite as
 (a,b) -> sop (a+b);
 ```
 
-**Important points about lamba expression **
+**Important points about lamba expression**
 
 1. A lambda expression can have zero or more number of parameters (arguments).
 
