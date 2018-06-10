@@ -22,6 +22,7 @@ The above method can be written as below in lambda expression :
 
 () -> sop(“hello”);
 ```
+
 **Another Example **
 
 ```java
