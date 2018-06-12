@@ -183,11 +183,11 @@ indicated (specified) by argument.
 
 ```java
 ArrayList<Integer> l1 = new ArrayList<Integer>();
-6) for(inti=0; i<=10; i++) {
-7) l1.add(i);
-8) }
-9) System.out.println(l1);
-10) List<Integer> l2 = l1.stream().filter(i -> i%2==0).collect(Collectors.toList());
+ for(inti=0; i<=10; i++) {
+ l1.add(i);
+ }
+System.out.println(l1);
+ List<Integer> l2 = l1.stream().filter(i -> i%2==0).collect(Collectors.toList());
 ```
 
 **Processing by count()method**
@@ -211,4 +211,29 @@ sop(“according to default natural sorting order:”+l3);
 List<String> l4=l.stream().sorted((s1,s2) -> -s1.compareTo(s2)).collect(Collectors.toList());
 sop(“according to customized sorting order:”+l4);
 ```
+**Processing by min() and max() methods**
 
+- min(Comparator c) : returns minimum value according to specified comparator.
+- max(Comparator c) : returns maximum value according to specified comparator.
+
+```java
+String min=l.stream().min((s1,s2) -> s1.compareTo(s2)).get();
+sop(“minimum value is:”+min);
+
+String max=l.stream().max((s1,s2) -> s1.compareTo(s2)).get();
+sop(“maximum value is:”+max);
+```
+**forEach() method**
+
+This method will not return anything.This method will take lambda expression as argument and apply that lambda expression for each element present in the stream.
+
+**Convert Stream into Array using toArray() method**
+We can use toArray() method to copy elements present in the stream into specified array
+```java
+Integer[] ir = l1.stream().toArray(Integer[] :: new);
+for(Integer i: ir) {
+ sop(i);
+ }
+ ```
+ 
+ 
