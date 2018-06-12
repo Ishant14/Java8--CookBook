@@ -176,3 +176,39 @@ Once we performed configuration we can process objects by using several methods.
 - **forEach()** method
 - **toArray()** method
 - **Stream.of()** method
+
+**Processing by collect() method**
+This method collects the elements from the stream and adding to the specified to the collection
+indicated (specified) by argument.
+
+```java
+ArrayList<Integer> l1 = new ArrayList<Integer>();
+6) for(inti=0; i<=10; i++) {
+7) l1.add(i);
+8) }
+9) System.out.println(l1);
+10) List<Integer> l2 = l1.stream().filter(i -> i%2==0).collect(Collectors.toList());
+```
+
+**Processing by count()method**
+This method returns number of elements present in the stream.
+
+```java
+long count = l.stream().filter(s ->s.length()==5).count();
+sop(“The number of 5 length strings is:”+count);
+```
+**Processing by sorted()method**
+If we sort the elements present inside stream then we should go for sorted() method.
+the sorting can either default natural sorting order or customized sorting order specified by
+comparator.
+- sorted()- default natural sorting order
+- sorted(Comparator c)-customized sorting order.
+
+```java
+List<String> l3=l.stream().sorted().collect(Collectors.toList());
+sop(“according to default natural sorting order:”+l3);
+
+List<String> l4=l.stream().sorted((s1,s2) -> -s1.compareTo(s2)).collect(Collectors.toList());
+sop(“according to customized sorting order:”+l4);
+```
+
