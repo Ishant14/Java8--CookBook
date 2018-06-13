@@ -1,6 +1,5 @@
 This repository contains all the new features introduced in detail. As the name suggest , the Java8 features were never defined in such detail on any blog or website. I have gathered them in a pieces and make this gem. So let's enjoy it .
 
-
 # Lambda Expression
 
 Lambda Expression is just an anonymous (nameless) function. That means the function which
@@ -85,8 +84,33 @@ present then curly braces are optional.
 7. Once we write lambda expression we can call that expression just like a method, for this
 functional interfaces are required.
 
+# Functional Interfaces
 
+If an interface contain only one abstract method, such type of interfaces are called functional
+interfaces and the method is called functional method or single abstract method (SAM).
 
+Ex:
+
+1) Runnable -> It contains only run() method
+2) Comparable -> It contains only compareTo() method
+3) ActionListener -> It contains only actionPerformed()
+4) Callable -> It contains only call() method
+
+Inside functional interface in addition to single Abstract method (SAM) we write any number of
+default and static methods.
+
+In Java 8, Sun Micro System introduced @Functional Interface annotation to specify that the interface
+is Functional Interface.
+
+```java
+@Functional Interface
+Interface Interf { 
+public void m1();
+ }
+```
+
+Inside Functional Interface we can take only one abstract method, if we take more than one abstract
+method then compiler raise an error message that is called we will get compilation error.
 
 
 
