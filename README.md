@@ -139,13 +139,7 @@ Stream = list.stream();
 Stream is an interface present in java.util.stream. Once we got the stream, by using that we can
 process objects of that collection.
 
-
-## We can process the objects in the following 2 phases
-
-1. Configuration
-2. Processing
-
-**1. Configuration**
+**There are different methods available in Streams:**
 
 We can configure either by using **filter** mechanism or by using **map** mechanism.
 
@@ -188,20 +182,33 @@ Example :
 Stream s = c.stream();
  Stream s1 = s.map(i-> i+10);
  ```
+
+**flatMap()**
+
+If you have a stream where every element contains its own sequence of elements and you want to create a stream of these inner elements, you should use the flatMap() method:
+
+```java
+List<Detail> details = new ArrayList<>();
+details.add(new Detail());
+Stream<String> stream
+  = details.stream().flatMap(detail -> detail.getParts().stream());
+  ```
+  
+In this example, we have a list of elements of type Detail. The Detail class contains a field PARTS, which is a List<String>. With the help of the flatMap() method every element from field PARTS will be extracted and added to the new resulting stream. After that, the initial Stream<Detail> will be lost.
+
+**Reduction**
+
+Stream API allows reducing a sequence of elements to some value according to a specified function with the help of the reduce() method of the type Stream. This method takes two parameters: first – start value, second – an accumulator function.
+
+Imagine that you have a List<Integer> and you want to have a sum of all these elements and some initial Integer (in this example 23). So, you can run the following code and result will be 26 (23 + 1 + 1 + 1).
  
-Once we performed configuration we can process objects by using several methods.
+ ```java
+ List<Integer> integers = Arrays.asList(1, 1, 1);
+Integer reduced = integers.stream().reduce(23, (a, b) -> a + b);
 
-**2. Processing**
+ ```
 
-- processing by **collect()** method
-- Processing by **count()** method
-- Processing by **sorted()** method
-- Processing by **min()** and **max()** methods
-- **forEach()** method
-- **toArray()** method
-- **Stream.of()** method
-
-**Processing by collect() method**
+**collect() method**
 This method collects the elements from the stream and adding to the specified to the collection
 indicated (specified) by argument.
 
@@ -214,14 +221,25 @@ System.out.println(l1);
  List<Integer> l2 = l1.stream().filter(i -> i%2==0).collect(Collectors.toList());
 ```
 
-**Processing by count()method**
+**Collecting**
+
+The reduction can also be provided by the collect() method of type Stream. This operation is very handy in case of converting a stream to a Collection or a Map and representing a stream in form of a single string. There is a utility class Collectors which provide a solution for almost all typical collecting operations. For some, not trivial tasks, a custom Collector can be created.
+
+```java
+List<String> resultList 
+  = list.stream().map(element -> element.toUpperCase()).collect(Collectors.toList());
+```
+This code uses the terminal collect() operation to reduce a Stream<String> to the List<String>.
+
+
+**count()method**
 This method returns number of elements present in the stream.
 
 ```java
 long count = l.stream().filter(s ->s.length()==5).count();
 sop(“The number of 5 length strings is:”+count);
 ```
-**Processing by sorted()method**
+**sorted()method**
 If we sort the elements present inside stream then we should go for sorted() method.
 the sorting can either default natural sorting order or customized sorting order specified by
 comparator.
@@ -235,7 +253,7 @@ sop(“according to default natural sorting order:”+l3);
 List<String> l4=l.stream().sorted((s1,s2) -> -s1.compareTo(s2)).collect(Collectors.toList());
 sop(“according to customized sorting order:”+l4);
 ```
-**Processing by min() and max() methods**
+**min() and max() methods**
 
 - min(Comparator c) : returns minimum value according to specified comparator.
 - max(Comparator c) : returns maximum value according to specified comparator.
@@ -251,6 +269,7 @@ sop(“maximum value is:”+max);
 
 This method will not return anything.This method will take lambda expression as argument and apply that lambda expression for each element present in the stream.
 
+
 **Convert Stream into Array using toArray() method**
 We can use toArray() method to copy elements present in the stream into specified array
 ```java
@@ -259,5 +278,8 @@ for(Integer i: ir) {
  sop(i);
  }
  ```
+ 
+ 
+ 
  
  
