@@ -86,17 +86,18 @@ functional interfaces are required.
 
 # Functional Interfaces
 
-If an interface contain only one abstract method, such type of interfaces are called functional
-interfaces and the method is called functional method or single abstract method (SAM).
+All functional interfaces are recommended to have an informative ```@FunctionalInterface``` annotation. This not only clearly communicates the purpose of this interface, but also allows a compiler to generate an error if the annotated interface does not satisfy the conditions.
 
-Ex:
+**Any interface with a SAM(Single Abstract Method) is a functional interface,** and its implementation may be treated as lambda expressions.
+
+Examples: 
 
 1) Runnable -> It contains only run() method
 2) Comparable -> It contains only compareTo() method
 3) ActionListener -> It contains only actionPerformed()
 4) Callable -> It contains only call() method
 
-Inside functional interface in addition to single Abstract method (SAM) we write any number of
+> Inside functional interface in addition to single Abstract method (SAM) we write any number of
 default and static methods.
 
 In Java 8, Sun Micro System introduced @Functional Interface annotation to specify that the interface
@@ -111,6 +112,33 @@ public void m1();
 
 Inside Functional Interface we can take only one abstract method, if we take more than one abstract
 method then compiler raise an error message that is called we will get compilation error.
+
+**Important points about @Functional Interface**
+- If no abstract method is defined in functional interface we will face **compilation error in java 8**. 
+- If more than one abstract method is defined in functional interface we will face **compilation error in java 8**.
+- @FunctionalInterface can have static and default method in java 8.
+
+
+**How to use @Functional Interface with lambda expression**
+
+```java
+@FunctionalInterface
+public interface MyInterface {
+    public void m1();
+
+}
+
+
+ public static void main(String args[]){
+
+        //Write LAMBDA EXPRESSION to implement method of MyInterface (FunctionalInterface)
+        MyInterface myInterface = () -> {
+            System.out.println("hi I am abstract method in MyInterface");
+        };
+
+        myInterface.m1();
+    }
+```
 
 
 
@@ -132,6 +160,7 @@ collection.
 - If we want to process a group of objects from the collection then we should go for streams.
 - We can create a stream object to the collection by using stream() method of Collection interface.
 stream() method is a default method added to the Collection in 1.8 version.
+
 ```java
 List<Person> list = new ArrayList();
 Stream = list.stream();
@@ -209,6 +238,7 @@ Integer reduced = integers.stream().reduce(23, (a, b) -> a + b);
  ```
 
 **collect() method**
+
 This method collects the elements from the stream and adding to the specified to the collection
 indicated (specified) by argument.
 
@@ -233,6 +263,7 @@ This code uses the terminal collect() operation to reduce a Stream<String> to th
 
 
 **count()method**
+
 This method returns number of elements present in the stream.
 
 ```java
@@ -240,6 +271,7 @@ long count = l.stream().filter(s ->s.length()==5).count();
 sop(“The number of 5 length strings is:”+count);
 ```
 **sorted()method**
+
 If we sort the elements present inside stream then we should go for sorted() method.
 the sorting can either default natural sorting order or customized sorting order specified by
 comparator.
@@ -265,19 +297,24 @@ sop(“minimum value is:”+min);
 String max=l.stream().max((s1,s2) -> s1.compareTo(s2)).get();
 sop(“maximum value is:”+max);
 ```
+
 **forEach() method**
 
 This method will not return anything.This method will take lambda expression as argument and apply that lambda expression for each element present in the stream.
 
 
 **Convert Stream into Array using toArray() method**
+
 We can use toArray() method to copy elements present in the stream into specified array
+
 ```java
 Integer[] ir = l1.stream().toArray(Integer[] :: new);
 for(Integer i: ir) {
  sop(i);
  }
  ```
+ 
+ 
  
  
  
